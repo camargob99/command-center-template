@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS doc (k TEXT NOT NULL, part INTEGER NOT NULL, v TEXT NOT NULL, PRIMARY KEY (k, part));
+CREATE TABLE IF NOT EXISTS wa_groups (jid TEXT PRIMARY KEY, name TEXT, watch INTEGER NOT NULL DEFAULT 0, last_at INTEGER);
+CREATE TABLE IF NOT EXISTS wa_msgs (chat TEXT NOT NULL, id TEXT NOT NULL, sender TEXT, body TEXT, ts INTEGER NOT NULL, added INTEGER NOT NULL, PRIMARY KEY (chat, id));
+CREATE INDEX IF NOT EXISTS wa_msgs_added ON wa_msgs (added);
+CREATE TABLE IF NOT EXISTS wa_events (id TEXT PRIMARY KEY, title TEXT NOT NULL, date TEXT, time TEXT, place TEXT, link TEXT, chat TEXT, note TEXT, status TEXT NOT NULL DEFAULT 'open', task_id TEXT, created INTEGER);
+CREATE TABLE IF NOT EXISTS wa_replies (id TEXT PRIMARY KEY, chat TEXT, sender TEXT, text TEXT, ts INTEGER, reason TEXT, status TEXT NOT NULL DEFAULT 'open', created INTEGER);

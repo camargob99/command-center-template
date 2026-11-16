@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Command Center</title>
+<script>try { if (localStorage.getItem('cc.theme') === 'dark') document.documentElement.classList.add('dark'); } catch {}</script>
+<link rel="stylesheet" href="/style.css">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#1d2331">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='2' y='2' width='28' height='28' rx='7' fill='%231d2331'/%3E%3Cpath d='M8 19h16' stroke='%23ffe066' stroke-width='6' stroke-linecap='round' opacity='.9'/%3E%3Cpath d='M9 15l4 4 9-9' stroke='%23fffdf8' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+</head>
+<body>
+<div class="app">
+  <aside class="side" id="side"></aside>
+  <main class="main">
+    <header class="topbar">
+      <div class="switch" id="tabs" role="tablist">
+        <button data-view="tasks" role="tab">Tasks</button>
+        <button data-view="calendar" role="tab">Calendar</button>
+      </div>
+      <form class="qadd" id="qa" autocomplete="off">
+        <span class="plus">+</span>
+        <input id="qa-input" placeholder="Add a task: Call Sam fri 2pm #Work" aria-label="Add a task">
+        <span class="kbd" id="qa-kbd">Q</span>
+        <button type="button" class="qi" data-act="cheats" title="How to write a task">?</button>
+        <div class="qa-chips" id="qa-chips"></div>
+      </form>
+      <button class="search" id="search-btn" title="Search and jump (Ctrl K)"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><span class="kbd">Ctrl K</span></button>
+      <button class="icon-btn" id="theme-btn" title="Light or dark"></button>
+      <span class="clock" id="clock"></span>
+    </header>
+    <div id="banner" class="banner hidden"></div>
+    <div class="view" id="view"></div>
+  </main>
+</div>
+
+<div id="suggest" class="suggest hidden" role="listbox"></div>
+<div id="cheats" class="popover hidden" role="dialog" aria-label="How to write a task">
+  <h4>How to write a task</h4>
+  <table>
+    <tr><td><code>tom</code><code>fri</code><code>next tue</code><code>nov 20</code></td><td>Due date</td></tr>
+    <tr><td><code>fri 2pm</code><code>at 9:30am</code></td><td>Date and time</td></tr>
+    <tr><td><code>for 30m</code><code>for 1h30m</code></td><td>How long to block</td></tr>
+    <tr><td><code>every mon</code><code>every weekday</code></td><td>Repeats</td></tr>
+    <tr><td><code>#</code></td><td>Pick a project from the list</td></tr>
+    <tr><td><code>/</code></td><td>Pick a section (after # for that project, or alone to see all)</td></tr>
+    <tr><td><code>@star</code></td><td>Star it so it sits at the top</td></tr>
+    <tr><td><code>p1</code><code>p2</code><code>p3</code></td><td>Priority</td></tr>
+  </table>
+  <div class="foot">No date means Unsorted. Keys: <b>1 2</b> switch tabs · <b>3</b> Inbox · <b>Q</b> add · <b>Ctrl K</b> search · <b>Esc</b> close</div>
+</div>
+<div id="modal" class="modal hidden" role="dialog" aria-modal="true"><div id="modal-card"></div></div>
+<div id="toast" class="toast hidden"></div>
+<script src="/app.js"></script>
+<script>if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(() => {});</script>
+</body>
+</html>

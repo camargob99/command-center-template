@@ -1,0 +1,15 @@
+data/
+demo-data/
+config.json
+todoist-import.json
+node_modules/
+claude-inbox/
+cloud/.secrets.json
+cloud/.secrets-upload.json
+cloud/google-web-client.json
+cloud/your-links.txt
+cloud/.wrangler/
+cloud/.dev.vars
+whatsapp/store/
+whatsapp/sync-state.json
+whatsapp/sync.log

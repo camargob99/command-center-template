@@ -1,0 +1,13 @@
+{
+  "name": "command-center",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Personal task + calendar dashboard",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "demo": "node server.js --demo",
+    "test": "node --test"
+  },
+  "engines": { "node": ">=18" }
+}
